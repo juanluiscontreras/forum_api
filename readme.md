@@ -63,7 +63,7 @@ Crear db y migrar esquemas
 ```bash
 
 
- git clone https://github.com/martynbiz/human_services_finder.git 
+ git clone https://github.com/juanluiscontreras/forum_api.git
 
   bundle install
 
