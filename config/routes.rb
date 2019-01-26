@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     		put 'resolve'
     	end
   	end
-  	post 'auth/login', to: 'authentication#authenticate'
-  	post 'sessions', to: 'users#create'
+
+  	post 'sessions', to: 'authentication#authenticate'
+    resources :users, only: [:create]
+  	#post 'users', to: 'users#create'
 end

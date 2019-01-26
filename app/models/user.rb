@@ -7,8 +7,7 @@ class User < ApplicationRecord
 	has_many :answers, dependent: :destroy
 
 	#validations
-	validates_presence_of :username, :password_digest, :screen_name, :email
-	validates_uniqueness_of :username, :email
-	validates_length_of :username, :minimum => 2
-  	validates_length_of :username, :maximum => 50
+	validates :username, :password_digest, :screen_name, :email, presence: true
+	validates :username, :email, uniqueness: true	
+	validates :username, length: { in: 2..50 }
 end

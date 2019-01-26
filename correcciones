@@ -1,0 +1,26 @@
+las rutas que no se encuentren mostrar un error mas corto
+
+las rutas de sessions y users estaban mal
+
+la autenticacion era con el username, no con el email
+
+usuarios y contraseñas de la bases de datos
+
+rutas usar sessions
+
+validates,ver la forma de escribir
+
+usar enum para los parametros
+
+
+Hola Juan,
+
+Te cargo los comentarios que hicimos durante la entrega:
+
+* Corregir tests
+* Mejorar routes.rb
+* Definir sort como enumerativo para simplificar questions#index
+
+Si llegas a tener dudas con heroku, por favor usa el foro de catedras.
+
+Saludos!

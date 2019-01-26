@@ -1,0 +1,17 @@
+#POST /users
+$ http :3000/users username=Hershel password=heyheyhey screen_name=krusty email=krusty@gmail.com
+
+#POST /sessions
+http :3000/sessions username=Hershel password=heyheyhey
+
+# GET /questions
+$ http :3000/questions
+
+# POST /questions
+$ http POST :3000/questions title="Que pregunta hago?"
+
+# PUT /questions/:id
+$ http PUT :3000/questions/1 title=Beethoven
+
+# DELETE /questions/:id
+$ http DELETE :3000/questions/1

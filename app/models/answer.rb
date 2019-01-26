@@ -5,5 +5,5 @@ class Answer < ApplicationRecord
   belongs_to :user, optional: true
 
   #validations
-  validates_presence_of :content
+  validates :content, presence:true
 end
