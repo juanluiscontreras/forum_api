@@ -1,12 +1,11 @@
 class QuestionsController < ApplicationController
 	before_action :set_question, only: [:show, :update, :destroy]
   skip_before_action :authorize_request, only: [:index, :show]
-  enum sort: { :latest, :pending_first, :needing_help }
 
   # GET /questions
   def index
     @questions = Question.all
-    if sort.include? (params[:sort]) ? json_response(get_answers_ordered(params[:sort])) : json_response(@questions.sort_by{|question| question.created_at})
+    if [ 'latest', 'pending_first', 'needing_help' ].include?(params[:sort]) then json_response(get_answers_ordered(params[:sort])) else json_response(@questions.sort_by{|question| question.created_at})end
   end
 
   # POST /questions
@@ -39,7 +38,6 @@ class QuestionsController < ApplicationController
     end
   end
 
-
   # DELETE /questions/:id
   def destroy
     @question.destroy
@@ -59,15 +57,15 @@ class QuestionsController < ApplicationController
 
   def get_answers_ordered(param)
     @questions = Question.all
-    case param
-    when "latest"
-      result = @questions.sort_by{|question| question.created_at}
-    when "pending_first"
-      result = @questions.sort_by{|question| question.status = 0}
-      result = result.sort_by{|question| question.created_at}
+    result = case param
+    when "latest" 
+      @questions.sort_by{|question| question.created_at}
+    when "pending_first" 
+      @questions.sort_by{|question| question.status = 0}
+      #result.sort_by{|question| question.created_at}
     when "needing_help"
-      result = @questions.collect{|question| question.status = 0}
+      @questions.collect{|question| question.status = 0}
     end
-    result
-  end
+  end   
 end
+
