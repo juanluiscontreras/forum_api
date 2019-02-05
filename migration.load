@@ -1,0 +1,4 @@
+LOAD DATABASE
+  	FROM mysql://juan@localhost/forum_api_development
+  	INTO postgresql://postgres:juan@localhost/forum_api_development
+ALTER SCHEMA 'forum_api_development' RENAME TO 'public';

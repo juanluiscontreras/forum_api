@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2018_12_17_183944) do
 
-  create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
     t.integer "question_id"
     t.text "content"
     t.integer "user_id"
@@ -21,7 +24,7 @@ ActiveRecord::Schema.define(version: 2018_12_17_183944) do
     t.boolean "is_correct"
   end
 
-  create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "questions", force: :cascade do |t|
     t.string "title", limit: 100
     t.text "description"
     t.boolean "status"
@@ -31,7 +34,7 @@ ActiveRecord::Schema.define(version: 2018_12_17_183944) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "username", limit: 50
     t.string "password"
     t.string "encrypted_password"
