@@ -17,6 +17,8 @@ En app/lib se encuentra la clase que provee jason web tokens
 
 En app/auth se encuentran los servicios que proveen la autenticación del usuario, y el control de que los request tengan un token válido.
 
+La base de datos utilizada es mysql
+
 
 ## Gemas utilizadas
 
@@ -44,6 +46,10 @@ permite almacenar contraseñas cifradas
 
 provee autenticación por token (jwt).
 
+#### mysql2
+
+gema para el uso de mysql como base de datos relacional
+
 ## Instalacion
 
 Clone el repositorio git
@@ -57,11 +63,14 @@ Crear db y migrar esquemas
 ```bash
 
 
- git clone https://github.com/martynbiz/human_services_finder.git 
+ git clone https://github.com/juanluiscontreras/forum_api.git
 
- bundle install 
+  bundle install
 
- rake db:create rake db:migrate 
+ rake db:create 
+ 
+ rails db:migrate 
+ 
 
 
 ```
