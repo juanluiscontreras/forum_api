@@ -33,10 +33,10 @@ class AuthorizeApiRequest
     @decoded_auth_token ||= JsonWebToken.decode(http_auth_header)
   end
 
-  # check for token in `Authorization` header
+  # check for token in `X-QA-Key` header
   def http_auth_header
-    if headers['Authorization'].present?
-      return headers['Authorization'].split(' ').last
+    if headers['X-QA-Key'].present?
+      return headers['X-QA-Key'].split(' ').last
     end
       raise(ExceptionHandler::MissingToken, Message.missing_token)
   end

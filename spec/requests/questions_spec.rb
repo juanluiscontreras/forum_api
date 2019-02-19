@@ -5,7 +5,6 @@ RSpec.describe 'Questions API', type: :request do
   # add questions owner
   let(:user) { create(:user) }
   let(:answer) { create(:answer) }
-
   let!(:questions) { create_list(:question, 10, user_id: user.id) }
   let(:question_id) { questions.first.id }
   # authorize request

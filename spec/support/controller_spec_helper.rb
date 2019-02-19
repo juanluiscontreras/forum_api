@@ -13,7 +13,7 @@ module ControllerSpecHelper
   # return valid headers
   def valid_headers
     {
-      "Authorization" => token_generator(user.id),
+      "X-QA-Key" => token_generator(user.id),
       "Content-Type" => "application/json"
     }
   end
@@ -21,7 +21,7 @@ module ControllerSpecHelper
   # return invalid headers
   def invalid_headers
     {
-      "Authorization" => nil,
+      "X-QA-Key" => nil,
       "Content-Type" => "application/json"
     }
   end

@@ -11,5 +11,4 @@ Rails.application.routes.draw do
 
   	post 'sessions', to: 'authentication#authenticate'
     resources :users, only: [:create]
-  	#post 'users', to: 'users#create'
 end
