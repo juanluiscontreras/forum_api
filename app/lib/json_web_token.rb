@@ -1,6 +1,5 @@
 class JsonWebToken
   # secret to encode and decode token
-  #HMAC_SECRET = Rails.application.secrets.secret_key_base
   HMAC_SECRET = ForumApi::Application.credentials.secret_key_base
 
   def self.encode(payload, exp = 30.minutes.from_now)

@@ -13,11 +13,11 @@ El código para generar datos de test se encuentran en specs/factories
 
 Para la autenticación, se modela al usuario con un atributo password_digest, requerido para autenticarlo contra un password bcrypt.
 
-En app/lib se encuentra la clase que provee jason web tokens
+En app/lib se encuentra la clase que provee jason web tokens. Para firmar los tokens se utiliza la secret key de la aplicación, ya que es única para cada aplicación.
 
-En app/auth se encuentran los servicios que proveen la autenticación del usuario, y el control de que los request tengan un token válido.
+En app/auth se encuentran los servicios que proveen la autenticación del usuario, y el control de que los request tengan un token válido. Los tests setean tokens inválidos para los casos que queremos probar fallas. También se hace uso de controller_spec_helper.rb para setear headers inválidos, donde "X-QA-Key" es nil.
 
-La base de datos utilizada es mysql
+La base de datos utilizada es postgresql
 
 
 ## Gemas utilizadas
@@ -52,7 +52,7 @@ gema para el uso de mysql como base de datos relacional
 
 ## Instalacion
 
-Clone el repositorio git
+Clonar el repositorio git
 
 Instalar todas las dependencias
 
@@ -65,7 +65,7 @@ Crear db y migrar esquemas
 
  git clone https://github.com/juanluiscontreras/forum_api.git
 
-  bundle install
+ bundle install
 
  rake db:create 
  
@@ -81,6 +81,13 @@ Crear db y migrar esquemas
 
 rails s #para realizar test manuales
 
-bundle exec rspec #para correr todos los tests con datos generados dinámicamente'
+bundle exec rspec #para correr todos los tests con datos generados dinámicamente. En cada test se inicializan datos falsos, por defecto la base está vacía'
 ```
 
+## Tests manuales
+
+```bash
+curl -v https://powerful-bastion-24395.herokuapp.com/users -H "Content-Type: application/json" -d '{ "username": "username", "password": "123123", "password_confirmation": "123123", "email": "some@email.com", "screen_name": "Screen" }'
+curl -v https://powerful-bastion-24395.herokuapp.com/questions -H "Content-Type: application/json"
+
+```
